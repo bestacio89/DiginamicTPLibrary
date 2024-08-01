@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="1" author="author">
+        <dropTable tableName="client"/>
+        <dropTable tableName="livre"/>
+        <dropTable tableName="emprunt"/>
+        <dropTable tableName="compo"/>
+
+        <createTable tableName="client">
+            <column name="id" type="SERIAL">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="nom" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="prenom" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="livre">
+            <column name="id" type="SERIAL">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="titre" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="auteur" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="emprunt">
+            <column name="id" type="SERIAL">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="date_debut" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_fin" type="TIMESTAMP"/>
+            <column name="id_client" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="compo">
+            <column name="id_liv" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_emp" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <insert tableName="client">
+            <column name="nom" value="Brigand"/>
+            <column name="prenom" value="Pierre"/>
+        </insert>
+        <insert tableName="client">
+            <column name="nom" value="YU"/>
+            <column name="prenom" value="Cheng"/>
+        </insert>
+        <insert tableName="client">
+            <column name="nom" value="BERRAD"/>
+            <column name="prenom" value="Hicham"/>
+        </insert>
+
+        <insert tableName="livre">
+            <column name="id" value="1"/>
+            <column name="titre" value="Vingt mille lieues sous les mers"/>
+            <column name="auteur" value="Jules Verne"/>
+        </insert>
+        <insert tableName="livre">
+            <column name="id" value="2"/>
+            <column name="titre" value="Germinal"/>
+            <column name="auteur" value="Emile Zola"/>
+        </insert>
+        <insert tableName="livre">
+            <column name="id" value="3"/>
+            <column name="titre" value="Guerre et paix"/>
+            <column name="auteur" value="Léon Tolstoï"/>
+        </insert>
+        <insert tableName="livre">
+            <column name="id" value="4"/>
+            <column name="titre" value="Apprendre à parler aux animaux"/>
+            <column name="auteur" value="Gaston Pouet"/>
+        </insert>
+        <insert tableName="livre">
+            <column name="id" value="5"/>
+            <column name="titre" value="1001 recettes de Cuisine"/>
+            <column name="auteur" value="Jean-Pierre Coffe"/>
+        </insert>
+
+        <insert tableName="emprunt">
+            <column name="id" value="1"/>
+            <column name="date_debut" value="2017-11-12"/>
+            <column name="date_fin" value="2017-11-18"/>
+            <column name="id_client" value="1"/>
+        </insert>
+        <insert tableName="emprunt">
+            <column name="id" value="2"/>
+            <column name="date_debut" value="2017-12-08"/>
+            <column name="date_fin" value="2017-12-23"/>
+            <column name="id_client" value="2"/>
+        </insert>
+        <insert tableName="emprunt">
+            <column name="id" value="3"/>
+            <column name="date_debut" value="2017-12-09"/>
+            <column name="date_fin" value="2018-01-04"/>
+            <column name="id_client" value="3"/>
+        </insert>
+        <insert tableName="emprunt">
+            <column name="id" value="4"/>
+            <column name="date_debut" value="2018-01-03"/>
+            <column name="id_client" value="1"/>
+        </insert>
+        <insert tableName="emprunt">
+            <column name="id" value="5"/>
+            <column name="date_debut" value="2018-01-13"/>
+            <column name="id_client" value="3"/>
+        </insert>
+
+        <insert tableName="compo">
+            <column name="id_liv" value="1"/>
+            <column name="id_emp" value="1"/>
+        </insert>
+        <insert tableName="compo">
+            <column name="id_liv" value="4"/>
+            <column name="id_emp" value="1"/>
+        </insert>
+        <insert tableName="compo">
+            <column name="id_liv" value="2"/>
+            <column name="id_emp" value="2"/>
+        </insert>
+        <insert tableName="compo">
+            <column name="id_liv" value="3"/>
+            <column name="id_emp" value="2"/>
+        </insert>
+        <insert tableName="compo">
+            <column name="id_liv" value="1"/>
+            <column name="id_emp" value="3"/>
+        </insert>
+        <insert tableName="compo">
+            <column name="id_liv" value="5"/>
+            <column name="id_emp" value="4"/>
+        </insert>
+        <insert tableName="compo">
+            <column name="id_liv" value="2"/>
+            <column name="id_emp" value="4"/>
+        </insert>
+        <insert tableName="compo">
+            <column name="id_liv" value="3"/>
+            <column name="id_emp" value="5"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
